@@ -5,13 +5,13 @@ terraform {
       source  = "hashicorp/aws"
       version = "2.70.0"
     }
-  }
 
   backend "s3" {
     bucket =  var.bucket_name
     key    =  var.bucket_key
     region =  var.aws_region
   }
+}
 
 
 provider "aws" {
