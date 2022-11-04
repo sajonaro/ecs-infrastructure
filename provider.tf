@@ -1,15 +1,15 @@
 terraform {
 
- required_providers {
+  required_providers {
 
-   aws = {
+    aws = {
 
-     source  = "hashicorp/aws"
+      source = "hashicorp/aws"
 
-     version = "~> 4.19.0"
+      version = "~> 4.19.0"
 
-   }
+    }
 
- }
+  }
 
 }

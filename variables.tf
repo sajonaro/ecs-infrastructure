@@ -49,9 +49,9 @@ variable "availability_zones" {
 }
 
 variable "bucket_name" {
-    description = "tf state bucket name"
+  description = "tf state bucket name"
 }
 
 variable "bucket_key" {
-    description = "tf state bucket key"
+  description = "tf state bucket key"
 }
