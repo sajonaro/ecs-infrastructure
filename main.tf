@@ -1,21 +1,15 @@
+resource "aws_instance" "my_vm" {
 
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "2.70.0"
-    }
+ ami                       = "ami-065deacbcaac64cf2" //Ubuntu AMI
 
-  backend "s3" {
-    bucket =  var.bucket_name
-    key    =  var.bucket_key
-    region =  var.aws_region
-  }
-}
+ instance_type             = "t2.micro"
 
 
-provider "aws" {
-  region     = var.aws_region
-  access_key = var.aws_access_key
-  secret_key = var.aws_secret_key
+
+ tags = {
+
+   Name = "My EC2 instance",
+
+ }
+
 }
