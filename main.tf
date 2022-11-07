@@ -1,6 +1,6 @@
 # Module to create a VPC network & Subnets 
 module "base-network" {
-  source  = "infrablocks/base-networking/aws"
+  source = "infrablocks/base-networking/aws"
 
   version = "4.0.0"
 
@@ -11,7 +11,7 @@ module "base-network" {
   deployment_identifier = var.app_environment
 
 }
- 
+
 # Module to Create ECS cluster
 /*module "ecs_cluster" {
   source = "infrablocks/ecs-cluster/aws"
