@@ -2,10 +2,6 @@ aws_region     = "eu-north-1"
 aws_access_key = "your aws access key"
 aws_secret_key = "your aws secret key"
 
-# s3 tf state 
-bucket_name = "tfstate-2022"
-bucket_key  = "tfstate"
-
 # these are zones and subnets examples
 cidr = "10.0.0.0/16"
 availability_zones = ["eu-north-1a", "eu-north-1b" ,"eu-north-1c"]
