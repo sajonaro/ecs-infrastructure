@@ -38,14 +38,17 @@ variable "cidr" {
 
 variable "public_subnets" {
   description = "List of public subnets"
+  default = []
 }
 
 variable "private_subnets" {
   description = "List of private subnets"
+  default = []
 }
 
 variable "availability_zones" {
   description = "List of availability zones"
+  default = []
 }
 
 variable "bucket_name" {
