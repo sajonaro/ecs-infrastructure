@@ -4,9 +4,9 @@ module "base-network" {
 
   version = "4.0.0"
 
-  vpc_cidr           = var.cidr
-  region             = var.aws_region
-  availability_zones = var.availability_zones
+  vpc_cidr              = var.cidr
+  region                = var.aws_region
+  availability_zones    = var.availability_zones
   component             = var.app_name
   deployment_identifier = var.app_environment
 
