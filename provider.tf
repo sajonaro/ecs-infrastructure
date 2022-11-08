@@ -13,25 +13,26 @@ provider "aws" {
 
 }
 
-resource "aws_s3_bucket" "tf_state"{
+resource "aws_s3_bucket" "tf_state" {
   bucket = "tfstate-2022"
   lifecycle {
-    prevent_destroy =true
+    prevent_destroy = true
   }
 
   versioning {
-    enabled= true
+    enabled = true
   }
 
   server_side_encryption_configuration {
     rule {
       apply_server_side_encryption_by_default {
-        sse_algorythm ="AES256"
+        sse_algorithm = "AES256"
       }
     }
   }
 }
 
+/*
 terraform {
   backend "s3" {
     bucket = "tfstate-2022"
@@ -40,3 +41,4 @@ terraform {
     encrypt = true
   }
 }
+*/
