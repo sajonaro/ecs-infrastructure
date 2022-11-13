@@ -42,7 +42,7 @@ terraform {
   backend "s3" {
     bucket = "tfstate-2022"
     key    = "global/s3/terraform.tfstate"
-    region = var.aws_region
+    region = "eu-north-1"
     encrypt = true
   }
 }
