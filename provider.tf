@@ -9,7 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region     = "eu-north-1"
+  region = "eu-north-1"
 
 }
 
@@ -32,7 +32,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
 
   rule {
     apply_server_side_encryption_by_default {
-      sse_algorithm     = "AES256"
+      sse_algorithm = "AES256"
     }
   }
 }
@@ -40,9 +40,9 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
 
 terraform {
   backend "s3" {
-    bucket = "tfstate-2022"
-    key    = "global/s3/terraform.tfstate"
-    region = "eu-north-1"
+    bucket  = "tfstate-2022"
+    key     = "global/s3/terraform.tfstate"
+    region  = "eu-north-1"
     encrypt = true
   }
 }
