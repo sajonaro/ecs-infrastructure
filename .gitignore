@@ -1,2 +1,4 @@
 .terraform*
-*.tfstate
+.aws
+terraform.tfstate
+terraform.tfstate*

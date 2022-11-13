@@ -1,6 +1,4 @@
 aws_region     = "eu-north-1"
-aws_access_key = "your aws access key"
-aws_secret_key = "your aws secret key"
 
 # these are zones and subnets examples
 cidr               = "10.0.0.0/16"

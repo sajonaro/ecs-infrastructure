@@ -9,7 +9,7 @@ terraform {
 
 # Configure the AWS Provider
 provider "aws" {
-  region = var.aws_region
+  region     = "eu-north-1"
 
 }
 
@@ -18,27 +18,31 @@ resource "aws_s3_bucket" "tf_state" {
   lifecycle {
     prevent_destroy = true
   }
+}
 
-  versioning {
-    enabled = true
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.tf_state.id
+  versioning_configuration {
+    status = "Enabled"
   }
+}
 
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
+resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
+  bucket = aws_s3_bucket.tf_state.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "AES256"
     }
   }
 }
 
-/*
+
 terraform {
   backend "s3" {
     bucket = "tfstate-2022"
     key    = "global/s3/terraform.tfstate"
-    region = "eu-north-1"
+    region = var.aws_region
     encrypt = true
   }
 }
-*/
