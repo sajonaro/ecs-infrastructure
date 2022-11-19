@@ -1,17 +1,17 @@
 # Module to create a VPC network & Subnets 
 module "base-network" {
-  source                   = "infrablocks/base-networking/aws"
-  version                  = "4.0.0"
-  vpc_cidr                 = var.cidr
-  region                   = var.aws_region
-  availability_zones       = var.availability_zones
-  component                = var.app_name
-  deployment_identifier    = var.app_environment
+  source                = "infrablocks/base-networking/aws"
+  version               = "4.0.0"
+  vpc_cidr              = var.cidr
+  region                = var.aws_region
+  availability_zones    = var.availability_zones
+  component             = var.app_name
+  deployment_identifier = var.app_environment
 }
 
 # Module to Create ECS cluster
 module "ecs_cluster" {
-  source                   = "~/modules/ecs-cluster/"
+  source                   = "{$path.cwd}/modules/ecs-cluster/"
   region                   = var.region
   vpc_id                   = module.base-network.vpc_id
   subnet_ids               = module.base-network.private_subnet_ids
