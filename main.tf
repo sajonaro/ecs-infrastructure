@@ -1,42 +1,30 @@
-
-
 # Module to create a VPC network & Subnets 
 module "base-network" {
-  source = "infrablocks/base-networking/aws"
-
-  version = "4.0.0"
-
-  vpc_cidr              = var.cidr
-  region                = var.aws_region
-  availability_zones    = var.availability_zones
-  component             = var.app_name
-  deployment_identifier = var.app_environment
-
+  source                   = "infrablocks/base-networking/aws"
+  version                  = "4.0.0"
+  vpc_cidr                 = var.cidr
+  region                   = var.aws_region
+  availability_zones       = var.availability_zones
+  component                = var.app_name
+  deployment_identifier    = var.app_environment
 }
-
 
 # Module to Create ECS cluster
-/*module "ecs_cluster" {
-  source = "infrablocks/ecs-cluster/aws"
-  version = "3.4.0"
-  
-  region = "eu-west-2"
-  vpc_id = "vpc-fb7dc365"
-  subnet_ids = "subnet-eb32c271,subnet-64872d1f"
-  
-  component = "important-component"
-  deployment_identifier = "production"
-  
-  cluster_name = "services"
-  cluster_instance_ssh_public_key_path = "~/.ssh/id_rsa.pub"
-  cluster_instance_type = "t2.small"
-  
-  cluster_minimum_size = 2
-  cluster_maximum_size = 10
-  cluster_desired_capacity = 4
+module "ecs_cluster" {
+  source                   = "~/modules/ecs-cluster/"
+  region                   = var.region
+  vpc_id                   = module.base-network.vpc_id
+  subnet_ids               = module.base-network.private_subnet_ids
+  component                = var.app_name
+  deployment_identifier    = var.app_environment
+  cluster_name             = var.app_name
+  cluster_instance_type    = var.cluster_instance_type
+  cluster_minimum_size     = var.cluster_minimum_size
+  cluster_maximum_size     = var.cluster_maximum_size
+  cluster_desired_capacity = var.cluster_desired_capacity
 }
 
-
+/*
 #ELB
 module "ecs_load_balancer" {
   source = "infrablocks/ecs-load-balancer/aws"
