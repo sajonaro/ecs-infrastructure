@@ -9,3 +9,9 @@ private_subnets    = ["10.10.0.0/24", "10.10.1.0/24", "10.10.2.0/24"]
 # these are used for tags
 app_name        = "clinic"
 app_environment = "prod"
+
+#cluster
+cluster_minimum_size = 2
+cluster_instance_type = "t2.small"
+cluster_desired_capacity = 3
+cluster_maximum_size = 4

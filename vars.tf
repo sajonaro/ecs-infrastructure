@@ -41,3 +41,14 @@ variable "availability_zones" {
   default     = []
 }
 
+variable "cluster_instance_type" {
+}
+
+variable "cluster_minimum_size" {
+}
+
+variable "cluster_maximum_size" {
+}
+
+variable "cluster_desired_capacity" {
+}
