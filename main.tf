@@ -11,7 +11,7 @@ module "base-network" {
 
 # Module to Create ECS cluster
 module "ecs_cluster" {
-  source                   = "./modules/ecs-cluster/"
+  source                   = "./modules/ecs-cluster"
   region                   = var.region
   vpc_id                   = module.base-network.vpc_id
   subnet_ids               = module.base-network.private_subnet_ids
