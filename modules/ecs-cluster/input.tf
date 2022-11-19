@@ -1,6 +1,3 @@
-variable "service_name" {
-}
-
 variable "service_port" {
   default = 80
 }
