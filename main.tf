@@ -27,7 +27,7 @@ module "ecs-cluster" {
 #sg
 resource "aws_security_group" "sg" {
   name   = "${var.app_name}-sg"
-  vpc_id = base-network.vpc_id
+  vpc_id = module.base-network.vpc_id
 
   ingress {
     from_port   = var.service_port
