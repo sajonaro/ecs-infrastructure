@@ -11,8 +11,7 @@ module "base-network" {
 
 #cluster
 module "ecs-cluster" {
-  source                   = "infrablocks/ecs-cluster/aws"
-  version                  = "3.4.0"
+  source                   = "./modules/ecs-cluster"
   component                = var.app_name
   deployment_identifier    = var.app_name
   region                   = var.aws_region
