@@ -8,7 +8,7 @@ variable "vpc_id" {
 }
 variable "subnet_ids" {
   description = "The IDs of the subnets for container instances."
-  type        = []
+  type        = list(string)
 }
 
 variable "component" {
