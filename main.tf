@@ -15,9 +15,9 @@ module "ecs-cluster" {
   component                = var.app_name
   deployment_identifier    = var.app_name
   region                   = var.aws_region
-  subnet_ids               = tolist[module.base-network.private_subnet_ids]
+  subnet_ids               = tolist(module.base-network.private_subnet_ids)
   vpc_id                   = module.base-network.vpc_id
-  security_groups          = tolist[aws_security_group.sg.id]
+  security_groups          = tolist(aws_security_group.sg.id)
   cluster_desired_capacity = var.cluster_desired_capacity
   cluster_instance_type    = var.cluster_instance_type
 
