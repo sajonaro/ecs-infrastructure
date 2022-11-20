@@ -54,5 +54,5 @@ variable "cluster_desired_capacity" {
 }
 
 variable "service_port" {
-  
+
 }
