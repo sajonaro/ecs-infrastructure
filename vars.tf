@@ -58,5 +58,5 @@ variable "service_port" {
 }
 
 variable "domain_name" {
-  
+
 }
