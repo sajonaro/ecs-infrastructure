@@ -18,8 +18,8 @@ resource "aws_ecs_service" "service" {
 
   network_configuration {
     assign_public_ip = true
-    security_groups  = [aws_security_group.sg.id]
-    subnets          = [aws_subnet.subnet.id]
+    security_groups  = [var.aws_security_group.sg.id]
+    subnets          = [var.subnet_ids]
   }
   lifecycle {
     ignore_changes = [task_definition]
@@ -28,7 +28,7 @@ resource "aws_ecs_service" "service" {
 
 resource "aws_security_group" "sg" {
   name   = "${var.service_name}-sg"
-  vpc_id = aws_vpc.main.id
+  vpc_id = var.vpc_id
 
   ingress {
     from_port   = var.service_port

@@ -9,19 +9,41 @@ module "base-network" {
   deployment_identifier = var.app_environment
 }
 
-# Module to Create ECS cluster
-module "ecs_cluster" {
-  source                   = "./modules/ecs-cluster"
-  region                   = var.region
-  vpc_id                   = module.base-network.vpc_id
-  subnet_ids               = module.base-network.private_subnet_ids
+#cluster
+module "ecs-cluster" {
+  source                   = "infrablocks/ecs-cluster/aws"
+  version                  = "3.4.0"
   component                = var.app_name
-  deployment_identifier    = var.app_environment
-  cluster_name             = var.app_name
-  cluster_instance_type    = var.cluster_instance_type
-  cluster_minimum_size     = var.cluster_minimum_size
-  cluster_maximum_size     = var.cluster_maximum_size
+  deployment_identifier    = var.app_name
+  region                   = var.aws_region
+  subnet_ids               = [module.base-network.private_subnet_ids]
+  vpc_id                   = module.base-network.vpc_id
+  security_groups          = [aws_security_group.sg.id]
   cluster_desired_capacity = var.cluster_desired_capacity
+  cluster_instance_type    = var.cluster_instance_type
+
+}
+
+#sg
+resource "aws_security_group" "sg" {
+  name   = "${var.app_name}-sg"
+  vpc_id = var.vpc_id
+
+  ingress {
+    from_port   = var.service_port
+    to_port     = var.service_port
+    protocol    = "tcp"
+    self        = "false"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "http"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 /*
@@ -57,7 +79,6 @@ module "ecs_load_balancer" {
   
   expose_to_public_internet = "yes"
 }
-
 
 # Module to Create ECS service
 module "ecs_service" {

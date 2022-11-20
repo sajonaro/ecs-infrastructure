@@ -11,7 +11,7 @@ app_name        = "clinic"
 app_environment = "prod"
 
 #cluster
-cluster_minimum_size = 2
+cluster_minimum_size = 3
 cluster_instance_type = "t2.small"
 cluster_desired_capacity = 3
-cluster_maximum_size = 4
+cluster_maximum_size = 3

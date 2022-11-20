@@ -2,6 +2,14 @@ variable "service_port" {
   default = 80
 }
 
+variable "vpc_id" {
+  
+}
+
+variable "subnet_ids" {
+  
+}
+
 variable "region" {
   
 }
