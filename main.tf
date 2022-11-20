@@ -1,3 +1,4 @@
+/*
 # Module to create a VPC network & Subnets 
 module "base-network" {
   source                = "infrablocks/base-networking/aws"
