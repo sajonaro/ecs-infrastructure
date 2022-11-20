@@ -48,21 +48,20 @@ resource "aws_security_group" "sg" {
 /*
 #ELB
 module "ecs_load_balancer" {
-  source = "infrablocks/ecs-load-balancer/aws"
-  version = "0.1.10"
+  source = ".modules/ecs-elb"
 
-  region = "eu-west-2"
+  region = var.aws_region
   vpc_id = "vpc-fb7dc365"
   subnet_ids = "subnet-ae4533c4,subnet-443e6b12"
   
   component = "important-component"
   deployment_identifier = "production"
   
-  service_name = "memcache"
+  service_name = "fe"
   service_port = "11211"
   service_certificate_arn = "arn:aws:acm:eu-west-2:121408295202:certificate/4e0452c7-d32d-4abd-b5f2-69490e83c936"
   
-  domain_name = "example.com"
+  domain_name = var.domain_name
   public_zone_id = "Z1WA3EVJBXSQ2V"
   private_zone_id = "Z3CVA9QD5NHSW3"
   
@@ -79,6 +78,7 @@ module "ecs_load_balancer" {
   expose_to_public_internet = "yes"
 }
 
+/*
 # Module to Create ECS service
 module "ecs_service" {
   source = "infrablocks/ecs-service/aws"

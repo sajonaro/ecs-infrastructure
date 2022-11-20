@@ -12,9 +12,11 @@ app_environment = "prod"
 
 #cluster
 cluster_minimum_size = 3
-cluster_instance_type = "t2.small"
+cluster_instance_type = "t3.micro"
 cluster_desired_capacity = 3
 cluster_maximum_size = 3
 
 #service
 service_port = 80
+
+domain_name = "drkunich.com"
