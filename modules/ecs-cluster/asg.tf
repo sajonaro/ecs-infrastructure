@@ -30,7 +30,7 @@ resource "aws_launch_configuration" "cluster" {
 
   user_data = local.cluster_user_data
 
-  security_groups = tolist([aws_security_group.cluster.id, local.security_groups])
+  security_groups = concat(tolist([aws_security_group.cluster.id]), local.security_groups)
 
   associate_public_ip_address = local.associate_public_ip_addresses == "yes" ? true : false
 
