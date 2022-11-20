@@ -15,3 +15,6 @@ cluster_minimum_size = 3
 cluster_instance_type = "t2.small"
 cluster_desired_capacity = 3
 cluster_maximum_size = 3
+
+#service
+service_port = 80

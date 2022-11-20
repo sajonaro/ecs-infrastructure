@@ -52,3 +52,7 @@ variable "cluster_maximum_size" {
 
 variable "cluster_desired_capacity" {
 }
+
+variable "service_port" {
+  
+}
